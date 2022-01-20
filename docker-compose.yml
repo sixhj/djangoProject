@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+
+  ################################################################
+  ##  web
+  ##  8000 django 启动端口
+  ################################################################
+  web:
+    container_name: hello
+    image: hello:v0118
+    command: circusd  /home/project/conf/circusd.ini
+    volumes:
+      - "./:/home/project/"
+    ports:
+      - "8125:8000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
